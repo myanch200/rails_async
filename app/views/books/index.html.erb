@@ -1,0 +1,31 @@
+<div class="">
+  <h1 class="mb-10">Books</h1>
+
+  <%= link_to "New book", new_book_path %>
+</div>
+
+<%= form_with url: books_path, method: :get do |f| %>
+  <div class="py-5">
+    <%= f.label :search %>
+    <%= f.text_field :search, placeholder: "Search by name", value: params[:search] %>
+  </div>
+ 
+<% end %>
+
+<div class="">
+
+  <h3>Total books: <%= @books_count.value %></h3>
+
+</div>
+
+
+<%= turbo_frame_tag 'books' do %>
+  <div id="books", class="grid grid-cols-3 gap-10">
+    <%# <%= render partial: 'book', collection: @books %>
+    <% @books.each do |book| %>
+      <%= render 'book', book: book %>
+    <% end %>
+    
+  </div>
+<% end %>
+
