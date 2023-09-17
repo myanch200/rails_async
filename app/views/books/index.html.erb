@@ -5,23 +5,32 @@
 </div>
 
 <%= form_with url: books_path, method: :get do |f| %>
-  <div class="py-5">
-    <%= f.label :search %>
-    <%= f.text_field :search, placeholder: "Search by name", value: params[:search] %>
+  <div class="py-5 flex flex-col justify-center items-center">
+    <%= f.label :search, class: 'text-xl font-bold' %>
+    <div class="w-full max-w-lg flex space-x-2 ">
+      <div class="relative flex-1 justify-center items-center">
+         <%= f.text_field :search, placeholder: "Search by name", class: 'w-full border-0 shadow-md rounded-md h-full' %>
+          <%= f.submit "&times;".html_safe, class: "absolute top-1/2 right-0 transform -translate-x-1/2 -translate-y-1/2 fond-bold text-2xl pointer", type: "reset" %>
+      </div>
+      <%= f.submit "&#x1F50D;".html_safe, class: "bg-sky-600 hover:bg-sky-700  text-white font-bold py-2 px-4 rounded cursor-pointer h-full", type: "submit" %>
+    
+    </div>
+
+    
   </div>
  
 <% end %>
 
-<div class="">
-
+<div class="my-10 prose">
+  <h3>Results for <%= params[:search] %></h3>
   <h3>Total books: <%= @books_count.value %></h3>
 
 </div>
 
 
 <%= turbo_frame_tag 'books' do %>
-  <div id="books", class="grid grid-cols-3 gap-10">
-    <%= render partial: 'book', collection: @books %>
+  <div id="books", class="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-3">
+    <%= render partial: 'book', collection: @books, cached: true %>
   </div>
 <% end %>
 

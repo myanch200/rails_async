@@ -9,6 +9,13 @@
     @apply py-2 px-4 bg-blue-200;
   }
 }
-
 */
+
 @import 'actiontext.css';
+
+
+@layer components {
+  marker {
+    @apply bg-sky-400;
+  }
+}

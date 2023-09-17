@@ -1,10 +1,10 @@
 <div id="<%= dom_id book %>" class="book bg-gray-100 shadow-md rounded-md border border-slate-300 p-4 flex flex-col">
   <h3 class="bold text-xl"><%= book.name %></h3>
   <%= book.author.name %>
-  <div class="">
+  <div class="py-5 blurred-img", style: "background-color: <%= url_for(book.cover.variant(:lazy_loaded))%>">
     
     <% if book.cover.attached? %>
-      <%= image_tag book.cover, class: "w-32 h-32 rounded-md" %>
+      <%= image_tag book.cover, class: 'w-full h-auto max-h-[300px] object-cover shadow-md', width: 300, height: 300 %>
     <% end %>
     
   </div>
