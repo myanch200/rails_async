@@ -1,8 +1,15 @@
 <div id="<%= dom_id book %>" class="book bg-gray-100 shadow-md rounded-md border border-slate-300 p-4 flex flex-col">
   <h3 class="bold text-xl"><%= book.name %></h3>
   <%= book.author.name %>
-  <%= book.status %>
-  <%= book.isbn %>
+  <div class="">
+    
+    <% if book.cover.attached? %>
+      <%= image_tag book.cover, class: "w-32 h-32 rounded-md" %>
+    <% end %>
+    
+  </div>
+  <p class="my-5 prose"><%= book.description.to_plain_text.truncate(30) %></p>
+
   <p class="my-5">
     <%= link_to "Show this book", book, class: "px-4 py-2 bg-sky-600 text-gray-100 rounded-md", data: {turbo: "false"} %>
   </p>

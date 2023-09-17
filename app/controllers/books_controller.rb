@@ -3,7 +3,7 @@ class BooksController < ApplicationController
 
   # GET /books or /books.json
   def index
-    @books = Book.search(params[:search]).order(:name)
+    @books = Book.includes(:author).search(params[:search]).order(:name)
     @books_count = @books.async_count
   end
 

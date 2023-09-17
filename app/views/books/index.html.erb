@@ -21,11 +21,7 @@
 
 <%= turbo_frame_tag 'books' do %>
   <div id="books", class="grid grid-cols-3 gap-10">
-    <%# <%= render partial: 'book', collection: @books %>
-    <% @books.each do |book| %>
-      <%= render 'book', book: book %>
-    <% end %>
-    
+    <%= render partial: 'book', collection: @books %>
   </div>
 <% end %>
 
