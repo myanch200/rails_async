@@ -3,8 +3,8 @@ class BooksController < ApplicationController
 
   # GET /books or /books.json
   def index
-    @books = Book.includes(:author).with_rich_text_description_and_embeds.with_attached_cover.search(params[:search]).order(:name)
-    @books_count = @books.async_count
+    @pagy, @books = pagy(Book.includes(:author).with_rich_text_description_and_embeds.with_attached_cover.search(params[:search]).order(:name))
+    @search = params[:search]
   end
 
   # GET /books/1 or /books/1.json
@@ -66,6 +66,6 @@ class BooksController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def book_params
-      params.require(:book).permit(:name, :status, :isbn, :description, :cover)
+      params.require(:book).permit(:name, :status, :isbn, :description, :cover, :author_id)
     end
 end

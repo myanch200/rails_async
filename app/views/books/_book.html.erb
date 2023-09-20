@@ -1,6 +1,8 @@
 <div id="<%= dom_id book %>" class="book bg-gray-100 shadow-md rounded-md border border-slate-300 p-4 flex flex-col">
   <h3 class="bold text-xl"><%= book.name %></h3>
-  <%= book.author.name %>
+  <%= link_to book.author.name, author_path(book.author), class: 'text-sky-600 underline', "data-turbo": false %>
+
+
   <div class="py-5 blurred-img", style: "background-color: <%= url_for(book.cover.variant(:lazy_loaded))%>">
     
     <% if book.cover.attached? %>
@@ -11,7 +13,7 @@
   <p class="my-5 prose"><%= book.description.to_plain_text.truncate(30) %></p>
 
   <p class="my-5">
-    <%= link_to "Show this book", book, class: "px-4 py-2 bg-sky-600 text-gray-100 rounded-md", data: {turbo: "false"} %>
+    <%= link_to "Read more...", book, class: "px-4 py-2 bg-sky-600 text-gray-100 rounded-md", data: {turbo: "false"} %>
   </p>
 
 </div>

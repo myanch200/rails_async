@@ -11,6 +11,7 @@ gem "faker"
 
 # Use postgresql as the database for Active Record
 gem "pg", "~> 1.1"
+gem 'pagy'
 
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma", ">= 5.0"
@@ -73,3 +74,5 @@ group :test do
 end
 
 gem "tailwindcss-rails", "~> 2.0"
+
+gem "shadcn-ui", "~> 0.0.12"

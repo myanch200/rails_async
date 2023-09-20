@@ -2,7 +2,7 @@ Author.destroy_all
 Book.destroy_all
 puts "All authors and books destroyed"
 
-1000.times do
+100.times do
   author = Author.create!(name: Faker::Book.author)
   puts "Author #{author.name} created"
 end

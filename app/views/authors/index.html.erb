@@ -1,0 +1,13 @@
+<div class="">
+  <h1 class="font-bold text-4xl">Authors</h1>
+
+  <%= link_to "New author", new_author_path %>
+  <div class="py-10">
+    <%= turbo_frame_tag @authors do%>
+      <%= render partial: 'author', collection: @authors %>
+    <% end %>
+  </div>
+  
+  <%== pagy_nav(@pagy,link_extra: 'data-turbo-action="advance"') if @pagy.pages > 1 %>
+
+</div>
